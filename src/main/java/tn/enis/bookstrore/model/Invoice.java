@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import tn.enis.bookstrore.util.converter.PaymentModeConverter;
+import tn.enis.bookstrore.util.enumerations.PaymentMode;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -22,6 +21,8 @@ public class Invoice extends BaseIdEntity {
     private Order order;
     @OneToOne(mappedBy = "invoice")
     private Payment payment;
+    @Convert(converter = PaymentModeConverter.class)
+    private PaymentMode paymentMode;
     private boolean isBillPaid;
     @Transient
     private double exclTaxesAmount;

@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import tn.enis.bookstrore.util.converter.DeliveryMethodConverter;
+import tn.enis.bookstrore.util.enumerations.DeliveryMethod;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -22,6 +24,8 @@ public class Order extends BaseIdEntity {
     @ManyToOne
     private Client client;
     private double totalAmount;
+    @Convert(converter = DeliveryMethodConverter.class)
+    private DeliveryMethod deliveryMethod;
     @OneToOne(mappedBy = "order",cascade = {CascadeType.REMOVE,CascadeType.MERGE})
     private Invoice invoice;
 }

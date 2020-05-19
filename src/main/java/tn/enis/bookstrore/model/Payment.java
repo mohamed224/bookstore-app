@@ -18,5 +18,5 @@ public class Payment extends BaseIdEntity {
     private Date paymentDate;
     @OneToOne
     private Invoice invoice;
-    private String paymentMode;
+
 }
