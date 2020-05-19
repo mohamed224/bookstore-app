@@ -1,4 +1,7 @@
 package tn.enis.bookstrore.web.controller;
 
-public class BookController {
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class BookRestController {
 }
