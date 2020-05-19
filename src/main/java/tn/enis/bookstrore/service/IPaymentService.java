@@ -1,4 +1,4 @@
 package tn.enis.bookstrore.service;
 
-public class IPaymentService {
+public interface IPaymentService {
 }
