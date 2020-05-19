@@ -1,4 +1,4 @@
-package tn.enis.bookstrore.web.controller.exception;
+package tn.enis.bookstrore.web.exception;
 
 public class BookException {
 }
