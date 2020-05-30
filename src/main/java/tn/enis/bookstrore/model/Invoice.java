@@ -1,5 +1,6 @@
 package tn.enis.bookstrore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,9 +21,8 @@ public class Invoice extends BaseIdEntity {
     @OneToOne
     private Order order;
     @OneToOne(mappedBy = "invoice")
+    @JsonIgnore
     private Payment payment;
-    @Convert(converter = PaymentModeConverter.class)
-    private PaymentMode paymentMode;
     private boolean isBillPaid;
     @Transient
     private double exclTaxesAmount;

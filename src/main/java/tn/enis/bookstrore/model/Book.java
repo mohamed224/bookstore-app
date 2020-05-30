@@ -1,5 +1,6 @@
 package tn.enis.bookstrore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,5 +23,6 @@ public class Book extends BaseIdEntity {
     private boolean available;
     private byte [] picByte;
     @ManyToOne
+    @JsonIgnore
     private Category category;
 }

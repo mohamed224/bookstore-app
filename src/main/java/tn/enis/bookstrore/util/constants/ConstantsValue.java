@@ -1,7 +1,7 @@
 package tn.enis.bookstrore.util.constants;
 
 public class ConstantsValue {
-    public static final double VAT=0.2; //VAT = value-added tax
+    public static final double RATE=0.2; //VAT = value-added tax
     public static final String LOWER_CHAR = "abcdefghijklmnopqrstuvwxyz";
     public static final String UPPER_CHAR = LOWER_CHAR.toUpperCase();
     public static final String NUMBER = "0123456789";
