@@ -4,10 +4,11 @@
 
 CREATE TABLE `orders` (
                           `id` bigint(20) NOT NULL,
+                          `cancelled_order` bit(1) NOT NULL,
                           `date` datetime DEFAULT NULL,
+                          `delivery_method` varchar(255) DEFAULT NULL,
                           `total_amount` double NOT NULL,
-                          `client_id` bigint(20) DEFAULT NULL,
-                          `delivery_method` varchar(255) DEFAULT NULL
+                          `client_id` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --

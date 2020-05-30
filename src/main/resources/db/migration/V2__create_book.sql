@@ -1,3 +1,7 @@
+--
+-- Structure de la table `book`
+--
+
 CREATE TABLE `book` (
                         `id` bigint(20) NOT NULL,
                         `author` varchar(255) DEFAULT NULL,

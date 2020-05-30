@@ -1,3 +1,7 @@
+--
+-- Structure de la table `category`
+--
+
 CREATE TABLE `category` (
                             `id` bigint(20) NOT NULL,
                             `name` varchar(255) DEFAULT NULL,

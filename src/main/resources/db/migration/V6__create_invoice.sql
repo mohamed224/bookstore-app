@@ -6,8 +6,7 @@ CREATE TABLE `invoice` (
                            `id` bigint(20) NOT NULL,
                            `date` datetime DEFAULT NULL,
                            `is_bill_paid` bit(1) NOT NULL,
-                           `order_id` bigint(20) DEFAULT NULL,
-                           `payment_mode` varchar(255) DEFAULT NULL
+                           `order_id` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
