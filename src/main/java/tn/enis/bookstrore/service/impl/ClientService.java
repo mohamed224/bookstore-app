@@ -11,6 +11,8 @@ import tn.enis.bookstrore.service.INotificationService;
 import tn.enis.bookstrore.util.Credential;
 import tn.enis.bookstrore.util.RandomPasswordGenerator;
 
+import java.util.List;
+
 @Service
 public class ClientService implements IClientService {
 
@@ -69,5 +71,15 @@ public class ClientService implements IClientService {
         } else {
             throw new RuntimeException("Votre mot de passe n'est pas correct");
         }
+    }
+
+    @Override
+    public Client getClientById(Long id) {
+        return clientRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Client> getAllClients() {
+        return clientRepository.findAll();
     }
 }

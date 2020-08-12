@@ -41,4 +41,9 @@ public class ClientRestController {
         clientService.changePassword(email, oldPassword, newPassword);
     }
 
+    @GetMapping("/clients/{id}")
+    public Client getClientById(@PathVariable Long id){
+        return clientService.getClientById(id);
+    }
+
 }
