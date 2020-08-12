@@ -31,7 +31,7 @@ public class ClientService implements IClientService {
     public Client login(Credential credential) {
         Client client = clientRepository.findByEmail(credential.getEmail());
         if (client == null || !encoder.matches(credential.getPassword(), client.getPassword())) {
-            throw new BadCredentialsException("Bad Credentials");
+            throw new BadCredentialsException("email ou mot de passe invalid");
         }
         return client;
     }
