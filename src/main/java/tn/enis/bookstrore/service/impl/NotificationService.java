@@ -23,11 +23,11 @@ public class NotificationService implements INotificationService {
     }
 
     @Override
-    public void resetPasswordNotification(String email,String newPassword) {
+    public void resetPasswordNotification(String email, String newPassword) {
         this.mail.setTo(email);
         this.mail.setSendDate(new Date());
         this.mail.setSubject(ConstantsValue.RESET_PASSWORD_SUBJECT);
-        this.mail.setBody("Ceci: "+newPassword+" est votre nouveau mot de passe, vous devez le modifier avant de continuer votre navigation.\n\n\n Cordialement");
+        this.mail.setBody("Ceci: " + newPassword + " est votre nouveau mot de passe, vous devez le modifier avant de continuer votre navigation.\n\n\n Cordialement");
         SimpleMailMessage mailMessage = notificationBuilder.mailMessage(this.mail);
         notificationBuilder.sendMail(mailMessage);
 

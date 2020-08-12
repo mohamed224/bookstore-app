@@ -19,15 +19,15 @@ public class OrderRestController {
     }
 
     @PostMapping("/orders")
-    public String placeOrder(@RequestBody List<OrderItem> items , @RequestParam("email") String email,
-                             @RequestParam("deliveryMethod") String deliveryMethod){
-        orderService.placeOrder(items,email,deliveryMethod);
+    public String placeOrder(@RequestBody List<OrderItem> items, @RequestParam("email") String email,
+                             @RequestParam("deliveryMethod") String deliveryMethod) {
+        orderService.placeOrder(items, email, deliveryMethod);
         return "Votre commande a été bien enrigistrée.";
 
     }
 
     @GetMapping("/orders")
-    public List<Order> getAllOrders(){
+    public List<Order> getAllOrders() {
         return orderService.getAllOrders();
     }
 }

@@ -8,6 +8,7 @@ import tn.enis.bookstrore.service.IBookService;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class BookRestController {
 
     private IBookService bookService;
@@ -18,27 +19,27 @@ public class BookRestController {
     }
 
     @PostMapping("/books")
-    public Book saveBook(@RequestBody Book book){
+    public Book saveBook(@RequestBody Book book) {
         return bookService.saveBook(book);
     }
 
     @GetMapping("/books")
-    public List<Book> getAllBooks(){
+    public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
 
     @GetMapping("/books/{id}")
-    public Book getBookById(@PathVariable Long id){
+    public Book getBookById(@PathVariable Long id) {
         return bookService.getBookById(id).get();
     }
 
     @PutMapping("/books/{id}")
-    public Book updateBook(@RequestBody Book book, @PathVariable Long id){
-        return bookService.updateBook(book,id);
+    public Book updateBook(@RequestBody Book book, @PathVariable Long id) {
+        return bookService.updateBook(book, id);
     }
 
     @DeleteMapping("/books/{id}")
-    public void deleteBook(@PathVariable Long id){
+    public void deleteBook(@PathVariable Long id) {
         bookService.deleteBookById(id);
     }
 }

@@ -13,7 +13,6 @@ import tn.enis.bookstrore.util.enumerations.DeliveryMethod;
 
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class OrderService implements IOrderService {
@@ -35,20 +34,23 @@ public class OrderService implements IOrderService {
 
     @Override
     public void placeOrder(List<OrderItem> items, String email, String deliveryMethod) {
-        double totalAmount = items.stream().mapToDouble(item ->(item.getQuantity() * item.getPrice())).sum();
+        double totalAmount = items.stream().mapToDouble(item -> (item.getQuantity() * item.getPrice())).sum();
         Order order = new Order();
         Client client = clientRepository.findByEmail(email);
+        if(client==null){
+            throw new RuntimeException("Ce client n'existe pas");
+        }
         DeliveryMethod method = DeliveryMethod.fromShortName(deliveryMethod);
         order.setClient(client);
         order.setDate(new Date());
         order.setDeliveryMethod(method);
         order.setTotalAmount(totalAmount);
         Order orderSaved = orderRepository.save(order);
-        if(order!=null){
-          for(OrderItem item:items){
-              item.setOrder(orderSaved);
-          }
-          orderItemRepository.saveAll(items);
+        if (order != null) {
+            for (OrderItem item : items) {
+                item.setOrder(orderSaved);
+            }
+            orderItemRepository.saveAll(items);
         }
     }
 }

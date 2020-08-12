@@ -21,8 +21,6 @@ public class Book extends BaseIdEntity {
     private double price;
     private int quantity;
     private boolean available;
-    private byte [] picByte;
-    @ManyToOne
-    @JsonIgnore
-    private Category category;
+    private byte[] picByte;
+
 }

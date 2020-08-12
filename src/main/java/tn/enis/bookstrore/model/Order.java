@@ -29,7 +29,5 @@ public class Order extends BaseIdEntity {
     @Convert(converter = DeliveryMethodConverter.class)
     private DeliveryMethod deliveryMethod;
     private boolean cancelledOrder;
-    @OneToOne(mappedBy = "order",cascade = {CascadeType.REMOVE,CascadeType.MERGE})
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Invoice invoice;
+
 }

@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import tn.enis.bookstrore.model.OrderItem;
 
 @Repository
-public interface OrderItemRepository extends JpaRepository<OrderItem,Long> {
+public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 }

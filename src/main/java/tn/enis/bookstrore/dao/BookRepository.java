@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import tn.enis.bookstrore.model.Book;
 
 @Repository
-public interface BookRepository extends JpaRepository<Book,Long> {
+public interface BookRepository extends JpaRepository<Book, Long> {
 }

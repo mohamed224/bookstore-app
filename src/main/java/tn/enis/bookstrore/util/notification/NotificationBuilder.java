@@ -18,7 +18,7 @@ public class NotificationBuilder {
         this.javaMailSender = javaMailSender;
     }
 
-    public SimpleMailMessage mailMessage(Mail mail){
+    public SimpleMailMessage mailMessage(Mail mail) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setSentDate(mail.getSendDate());
         mailMessage.setTo(mail.getTo());
@@ -28,10 +28,10 @@ public class NotificationBuilder {
         return mailMessage;
     }
 
-    public void sendMail(SimpleMailMessage simpleMailMessage){
+    public void sendMail(SimpleMailMessage simpleMailMessage) {
         try {
             javaMailSender.send(simpleMailMessage);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error(e.getMessage());
         }
 

@@ -7,8 +7,12 @@ import java.util.Optional;
 
 public interface IBookService {
     Book saveBook(Book book);
+
     Optional<Book> getBookById(Long id);
+
     List<Book> getAllBooks();
-    Book updateBook(Book book,Long id);
+
+    Book updateBook(Book book, Long id);
+
     void deleteBookById(Long id);
 }

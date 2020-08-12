@@ -6,7 +6,7 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 @Converter(autoApply = true)
-public class DeliveryMethodConverter implements AttributeConverter<DeliveryMethod,String> {
+public class DeliveryMethodConverter implements AttributeConverter<DeliveryMethod, String> {
     @Override
     public String convertToDatabaseColumn(DeliveryMethod deliveryMethod) {
         return deliveryMethod.getShortName();

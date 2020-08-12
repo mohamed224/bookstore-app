@@ -5,12 +5,8 @@ public enum DeliveryMethod {
     EXPRESS("E"), RELAY("R");
     private String shortName;
 
-    DeliveryMethod(String shortName){
+    DeliveryMethod(String shortName) {
         this.shortName = shortName;
-    }
-
-    public String getShortName() {
-        return this.shortName;
     }
 
     public static DeliveryMethod fromShortName(String shortName) {
@@ -22,5 +18,9 @@ public enum DeliveryMethod {
             default:
                 throw new IllegalArgumentException("ShortName [" + shortName + "] not supported");
         }
+    }
+
+    public String getShortName() {
+        return this.shortName;
     }
 }

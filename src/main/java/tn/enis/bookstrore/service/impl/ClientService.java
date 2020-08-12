@@ -30,7 +30,7 @@ public class ClientService implements IClientService {
     @Override
     public Client login(Credential credential) {
         Client client = clientRepository.findByEmail(credential.getEmail());
-        if(client==null || !encoder.matches(credential.getPassword(),client.getPassword())){
+        if (client == null || !encoder.matches(credential.getPassword(), client.getPassword())) {
             throw new BadCredentialsException("Bad Credentials");
         }
         return client;
@@ -46,27 +46,27 @@ public class ClientService implements IClientService {
     @Override
     public void resetPassword(String email) {
         Client client = clientRepository.findByEmail(email);
-        if(client==null){
-            throw new RuntimeException();
+        if (client == null) {
+            throw new RuntimeException("Ce client n'existe pas.");
         }
-        String newPassword = randomPasswordGenerator.generatePassword();
+        String newPassword = RandomPasswordGenerator.generatePassword();
         String encodedPassword = encoder.encode(newPassword);
         client.setPassword(encodedPassword);
         clientRepository.saveAndFlush(client);
-        notificationService.resetPasswordNotification(email,newPassword);
+        notificationService.resetPasswordNotification(email, newPassword);
     }
 
     @Override
     public void changePassword(String email, String oldPassword, String newPassword) {
         Client client = clientRepository.findByEmail(email);
-        if(client==null){
+        if (client == null) {
             throw new RuntimeException("Ce client n'existe pas.");
         }
-        if(encoder.matches(oldPassword,client.getPassword())){
+        if (encoder.matches(oldPassword, client.getPassword())) {
             String encodedPassword = encoder.encode(newPassword);
             client.setPassword(encodedPassword);
             clientRepository.saveAndFlush(client);
-        }else{
+        } else {
             throw new RuntimeException("Votre mot de passe n'est pas correct");
         }
     }

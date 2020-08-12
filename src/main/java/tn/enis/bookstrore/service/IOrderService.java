@@ -8,5 +8,6 @@ import java.util.List;
 public interface IOrderService {
 
     List<Order> getAllOrders();
-    void placeOrder(List<OrderItem> items , String email , String deliveryMethod);
+
+    void placeOrder(List<OrderItem> items, String email, String deliveryMethod);
 }

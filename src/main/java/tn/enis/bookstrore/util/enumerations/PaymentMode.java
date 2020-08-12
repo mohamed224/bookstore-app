@@ -9,10 +9,6 @@ public enum PaymentMode {
         this.shortName = shortName;
     }
 
-    public String getShortName() {
-        return this.shortName;
-    }
-
     public static PaymentMode fromShortName(String shortName) {
         switch (shortName) {
             case "CH":
@@ -24,5 +20,9 @@ public enum PaymentMode {
             default:
                 throw new IllegalArgumentException("ShortName [" + shortName + "] not supported");
         }
+    }
+
+    public String getShortName() {
+        return this.shortName;
     }
 }
