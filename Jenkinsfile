@@ -17,7 +17,11 @@ pipeline{
         stage("Angular project"){
             steps{
                 dir("${env.WORKSPACE}/bookstore-client/src"){
-                    bat 'npm start'
+                    script{
+                        bat '''npm install
+                             npm start
+                        '''
+                    }
                 }
             }
         }
