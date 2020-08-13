@@ -18,9 +18,8 @@ pipeline{
             steps{
                 dir("${env.WORKSPACE}/bookstore-client/src"){
                     script{
-                        bat '''npm install
-                             npm start
-                        '''
+                        bat  'npm install'
+                        bat  'npm start'
                     }
                 }
             }
