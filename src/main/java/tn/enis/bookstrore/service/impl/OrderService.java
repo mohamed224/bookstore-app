@@ -46,7 +46,7 @@ public class OrderService implements IOrderService {
         order.setDeliveryMethod(method);
         order.setTotalAmount(totalAmount);
         Order orderSaved = orderRepository.save(order);
-        if (order != null) {
+        if (orderSaved != null) {
             for (OrderItem item : items) {
                 item.setOrder(orderSaved);
             }
