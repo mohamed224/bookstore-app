@@ -21,11 +21,12 @@ pipeline{
         }
 
         stage("Push docker image"){
-            withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
-                bat "docker login -u mohamed224 -p ${dockerHubPwd}"
-            }
-
-            bat 'docker push mohamed224/book-store:1.0.0'
+            steps{
+                withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
+                         bat "docker login -u mohamed224 -p ${dockerHubPwd}"
+                       }
+                   bat 'docker push mohamed224/book-store:1.0.0'
+           }
         }
 
     }
