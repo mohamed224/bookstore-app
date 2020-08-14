@@ -14,14 +14,9 @@ pipeline{
             }
         }
 
-        stage("Angular project"){
+        stage("Build docker image"){
             steps{
-                dir("${env.WORKSPACE}/bookstore-client/src"){
-                    script{
-                        bat  'npm install'
-                        bat  'npm start'
-                    }
-                }
+                bat 'docker build -t mohamed224/book-store:1.0.0 .'
             }
         }
 
