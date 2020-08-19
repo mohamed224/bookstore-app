@@ -18,18 +18,15 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
               "src/styles.css"
-
             ],
-            "scripts": [
-
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -44,7 +41,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -93,10 +89,11 @@
             ],
             "styles": [
               "src/styles.css",
-              "../node_modules/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "/node_modules/font-awesome/css/font-awesome.min.css"
             ],
             "scripts": [
-              "node_modules/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           }
         },
@@ -126,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "bookstore-client"
+    }
+  },
+  "defaultProject": "bookstore-client",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -15,12 +15,12 @@ export class GenericService {
     this.connection = this.configService.config.serverUrl;
   }
 
-  public callService(action: Operation, endPoint: string, data?: any, query ?: string): Observable<any> | Observable<any[]> | any {
+  public callService(action: Operation, endPoint: string, data?: any, query ?: string, options?: any): Observable<any> | Observable<any[]> | any {
 
     switch (action) {
       case Operation.POST : {
         const qOptions: string = query ? `?${query}` : '';
-        return this.httpClient.post(`${this.connection}/${endPoint}${qOptions}`, data);
+        return this.httpClient.post(`${this.connection}/${endPoint}${qOptions}`, data , options);
       }
       case Operation.PUT : {
         if (data && !query) {

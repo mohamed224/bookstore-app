@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -21,6 +22,7 @@ public class Book extends BaseIdEntity {
     private double price;
     private int quantity;
     private boolean available;
+    @Lob
     private byte[] picByte;
 
 }

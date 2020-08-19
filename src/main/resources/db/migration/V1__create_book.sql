@@ -9,7 +9,7 @@ CREATE TABLE `book`
     `available`   bit(1)     NOT NULL,
     `description` varchar(255) DEFAULT NULL,
     `name`        varchar(255) DEFAULT NULL,
-    `pic_byte`    tinyblob     DEFAULT NULL,
+    `pic_byte`    longblob     DEFAULT NULL,
     `price`       double     NOT NULL,
     `quantity`    int(11)    NOT NULL
 ) ENGINE = MyISAM

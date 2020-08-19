@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GenericService} from "../../service/generic.service";
 import {Operation} from "../../utils/operations";
+import {Book} from "../model/book";
 
 @Component({
   selector: 'app-books',
@@ -9,7 +10,7 @@ import {Operation} from "../../utils/operations";
 })
 export class BooksComponent implements OnInit {
 
-  books: any;
+  books: Book [];
 
   constructor(private genericService: GenericService) {
   }
@@ -21,7 +22,16 @@ export class BooksComponent implements OnInit {
   getBooks() {
     this.genericService.callService(Operation.GET, 'books').subscribe(data => {
       this.books = data;
+      this.books = this.setBookImgUrl(this.books);
     })
   }
 
+  private setBookImgUrl(books: Book []) : Book []{
+    const returnedBooks : Book [] =[];
+    books.forEach(book => {
+      book.imgUrl = 'data:image/jpeg;base64,' + book.picByte;
+      returnedBooks.push(book);
+    });
+    return returnedBooks;
+  }
 }
