@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {configServerInitFactory, ConfigService} from "./service/config.service";
 import {BooksModule} from "./books/books.module";
-
+import {ContentModule} from "./content/content.module";
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import {BooksModule} from "./books/books.module";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BooksModule
+    BooksModule,
+    ContentModule
 
   ],
   providers: [

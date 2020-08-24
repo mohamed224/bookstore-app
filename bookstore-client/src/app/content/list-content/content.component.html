@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <header class="sticky-top">
+    <h5 class="text-info">Book-Store</h5>
+    <nav>
+      <ul class="nav__links">
+        <li><a href="#" title="panier"><i class="fa fa-shopping-cart"></i></a></li>
+        <li><a href="#" title="Notification"><i class="fa fa-bell"></i></a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+    <a href="#" class="cta"><button>Login</button></a>
+  </header>
+
+  <!---------------On sale product------------->
+
+  <section class="on-sale">
+    <div>
+      <div class="title-box">
+        <h2>Mes Livres</h2>
+      </div>
+      <div class="row">
+        <div *ngFor="let book of books" class="col-md-3">
+          <div class="product-top">
+            <img src="{{book.imgUrl}}" height="250px;" width="150px;">
+            <div class="overlay-right">
+                <button type="button" class="btn btn-secondary" title="Voir detail" (click)="detailBook(book.id)">
+                  <i class="fa fa-eye"></i>
+                </button>
+              <button type="button" class="btn btn-secondary" title="Aimé">
+                <i class="fa fa-heart"></i>
+              </button>
+              <button type="button" class="btn btn-secondary" title="Ajouter au panier" (click)="addToCard(book)">
+                <i class="fa fa-shopping-cart"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product-bottom text-center">
+            <div class="fa fa-star"></div>
+            <div class="fa fa-star"></div>
+            <div class="fa fa-star"></div>
+            <div class="fa fa-star"></div>
+            <div class="fa fa-star-half"></div>
+            <h3>{{book.name}}</h3>
+            <h5>{{book.price | currency}}</h5>
+          </div>
+        </div>
+        </div>
+      </div>
+  </section>
+
+</div>

@@ -1,3 +1,43 @@
-<p *ngFor="let book of books">
-  <img src="{{book.imgUrl}}" height="50px;" width="50px;">
-</p>
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="card col-md-10 col-lg-12 col-sm-12">
+      <div class="card-header">
+        <div class="col-sm-5 mt-1">
+          <h3 class="card-title mb-0">Liste des Livres</h3>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <button (click)="addBook()"
+              class="btn btn-primary pull-right" title="Ajouter un livre"><i class="fa fa-plus"></i></button>
+      <table class="table table-striped">
+        <thead>
+        <tr class="text-center">
+          <th>Nom</th>
+          <th>Auteur</th>
+          <th>Image</th>
+          <th>Prix</th>
+          <th>Quantité</th>
+          <th class="text-right">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let book of books" class="text-center">
+          <td>{{book.name}}</td>
+          <td>{{book.author}}</td>
+          <td><img class="rounded-circle" height="45px;" src="{{book.imgUrl}}" width="45px;"></td>
+          <td>{{book.price | currency}}</td>
+          <td>{{book.quantity}}</td>
+          <td><a (click)="viewBook(book.id)" class="cursor"><i class="fa fa-eye"
+                                                               style="color: blue; cursor: pointer"></i></a></td>
+          <td><a (click)="editBook(book.id)" class="cursor"><i class="fa fa-edit"
+                                                               style="color: blue; cursor: pointer"></i></a></td>
+          <td><a (click)="deleteBook(book)" class="cursor"><i class="fa fa-trash"
+                                                              style="color: red; cursor: pointer"></i></a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

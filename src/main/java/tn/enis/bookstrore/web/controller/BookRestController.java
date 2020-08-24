@@ -46,6 +46,8 @@ public class BookRestController {
 
     @PutMapping("/books/{id}")
     public Book updateBook(@RequestBody Book book, @PathVariable Long id) {
+        book.setPicByte(this.bytes);
+        this.bytes = null;
         return bookService.updateBook(book, id);
     }
 

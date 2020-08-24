@@ -4,51 +4,49 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title text-center">Ajouter un nouveau livre</h3>
+          <h3 class="card-title text-center">{{isUpdateMode ? 'Modifier livre' : 'Nouveau livre'}}</h3>
         </div>
         <div class="card-body">
-          <form [formGroup]="bookForm" >
-              <div class="card-body">
-                <div class="col-md-12">
-                  <label>Nom</label><br>
-                  <input type="text" class="form-control" formControlName="name" name="name">
-                </div>
-                <div class="col-md-12">
-                  <label>Description</label><br>
-                  <textarea type="text" class="form-control" formControlName="description" name="description"></textarea>
-                </div>
-                <div class="col-md-12">
-                  <label>Auteur</label><br>
-                  <input type="text" class="form-control" formControlName="author" name="author">
-                </div>
-                <div class="col-md-12">
-                  <label>Prix</label><br>
-                  <input type="number" class="form-control" formControlName="price" name="price">
-                </div>
-                <div class="col-md-12">
-                  <label>Quantité</label><br>
-                  <input type="number" class="form-control" formControlName="quantity" name="quantity">
-                </div>
-                <div class="col-md-12">
-                  <label>Quantité</label><br>
-                  <input type="file" class="form-control-file" formControlName="picByte" name="picByte" (change)="bookPicChange($event)">
-                  <img [src]="imgUrl" height="80" width="80" *ngIf="imgUrl">
-                </div>
+          <form [formGroup]="bookForm">
+            <div class="card-body">
+              <div class="col-md-12">
+                <label>Nom</label><br>
+                <input class="form-control" formControlName="name" name="name" type="text">
               </div>
+              <div class="col-md-12">
+                <label>Description</label><br>
+                <textarea class="form-control" formControlName="description" name="description" type="text"></textarea>
+              </div>
+              <div class="col-md-12">
+                <label>Auteur</label><br>
+                <input class="form-control" formControlName="author" name="author" type="text">
+              </div>
+              <div class="col-md-12">
+                <label>Prix</label><br>
+                <input class="form-control" formControlName="price" name="price" type="number">
+              </div>
+              <div class="col-md-12">
+                <label>Quantité</label><br>
+                <input class="form-control" formControlName="quantity" name="quantity" type="number">
+              </div>
+              <div class="col-md-12">
+                <label>Image</label><br>
+                <input (change)="bookPicChange($event)" class="form-control-file" formControlName="picByte" name="picByte"
+                       type="file">
+                <img *ngIf="imgUrl" [src]="imgUrl" height="80" width="80">
+              </div>
+            </div>
           </form>
         </div>
         <div class="card-footer">
-          <a class="btn btn-sm btn-primary" routerLink="/main/administration/user">
+          <a class="btn btn-sm btn-primary" routerLink="/book">
             <i class="fa fa-chevron-circle-left"></i> Retour à la liste
           </a>
-          <button class="btn btn-sm btn-danger ml-2" type="submit" (click)="save()">
+          <button (click)="save()" class="btn btn-sm btn-danger ml-2" type="submit">
             <i class="fa fa-floppy-o"></i> Enregistrer
           </button>
         </div>
       </div>
-    </div>
-    <div class="col-md-3">
-        <img src="{{imgDisplayed}}" height="300" width="200" *ngIf="imgDisplayed">
     </div>
   </div>
 </div>

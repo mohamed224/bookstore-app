@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {GenericService} from "../../service/generic.service";
 import {Operation} from "../../utils/operations";
 import {Book} from "../model/book";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-books',
@@ -12,7 +13,7 @@ export class BooksComponent implements OnInit {
 
   books: Book [];
 
-  constructor(private genericService: GenericService) {
+  constructor(private genericService: GenericService, private router: Router) {
   }
 
   ngOnInit() {
@@ -22,16 +23,28 @@ export class BooksComponent implements OnInit {
   getBooks() {
     this.genericService.callService(Operation.GET, 'books').subscribe(data => {
       this.books = data;
-      this.books = this.setBookImgUrl(this.books);
+      this.books = this.genericService.setBookImgUrl(this.books);
     })
   }
 
-  private setBookImgUrl(books: Book []) : Book []{
-    const returnedBooks : Book [] =[];
-    books.forEach(book => {
-      book.imgUrl = 'data:image/jpeg;base64,' + book.picByte;
-      returnedBooks.push(book);
-    });
-    return returnedBooks;
+  addBook() {
+    this.router.navigateByUrl('book/add');
   }
+
+  viewBook(id: number) {
+
+  }
+
+  editBook(id: number) {
+    this.router.navigate(['book/edit/', id]);
+  }
+
+  deleteBook(book: Book) {
+    this.genericService.callService(Operation.DELETE, 'books', book)
+      .subscribe(() => {
+        this.getBooks();
+      });
+  }
+
+
 }

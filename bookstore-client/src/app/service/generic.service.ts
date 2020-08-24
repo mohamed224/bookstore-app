@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {ConfigService} from "./config.service";
 import {Operation} from "../utils/operations";
 import {Observable} from "rxjs";
+import {Book} from "../books/model/book";
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +21,11 @@ export class GenericService {
     switch (action) {
       case Operation.POST : {
         const qOptions: string = query ? `?${query}` : '';
-        return this.httpClient.post(`${this.connection}/${endPoint}${qOptions}`, data , options);
+        return this.httpClient.post(`${this.connection}/${endPoint}${qOptions}`, data, options);
       }
       case Operation.PUT : {
         if (data && !query) {
-          return this.httpClient.put(`${this.connection}/${endPoint}/${data.id}`, data);
+          return this.httpClient.put(`${this.connection}/${endPoint}/${data.id}`, data, options);
         } else {
           const qOptions: string = query ? `?${query}` : '';
           return this.httpClient.put(`${this.connection}/${endPoint}${qOptions}`, {});
@@ -39,7 +40,20 @@ export class GenericService {
       case Operation.DELETE : {
         return this.httpClient.delete(`${this.connection}/${endPoint}/${data.id}`);
       }
+
+      default : {
+        return new Observable();
+      }
     }
 
+  }
+
+  public setBookImgUrl(books: Book []): Book [] {
+    const returnedBooks: Book [] = [];
+    books.forEach(book => {
+      book.imgUrl = 'data:image/jpeg;base64,' + book.picByte;
+      returnedBooks.push(book);
+    });
+    return returnedBooks;
   }
 }

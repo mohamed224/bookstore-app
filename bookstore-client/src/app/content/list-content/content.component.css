@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500');
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+
+}
+
+li, a, button{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
+header{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 30px 10%;
+  height: 15px;
+  background-color: #24252A;
+
+}
+
+h5{
+  cursor: pointer;
+  margin-right: auto;
+}
+
+.nav__links{
+  list-style: none;
+}
+
+.nav__links li{
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.nav__links li a {
+  transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover{
+  color: #0088a9;
+}
+
+button{
+  margin-left: 20px;
+  padding: 9px 25px;
+  background-color: rgba(0,136,169,1);
+  border: none;
+  border-radius: 50px ;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+button:hover {
+  background-color: rgba(0, 136, 169, 0.8);
+}
+
+
+
+/*----------------------On sale product=--------------------*/
+section{
+  padding-top: 25px;
+}
+.title-box{
+  background-color:  #24252A;
+  color: #fff;
+  width: 180px;
+  padding: 4px 10px;
+  height: 40px;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.title-box h2{
+  font-size: 24px;
+}
+
+.title-box::after{
+  content: '';
+  border-top: 40px solid  #24252A;
+  border-right:  50px solid transparent;
+  position: absolute;
+  display: flex;
+  margin-top: -4px;
+  margin-left: 170px ;
+}
+
+/*-------------------------product top------------------------*/
+
+.product-top{
+  margin-left: 25px;
+  padding-top: 10px;
+}
+
+.product-top img{
+  width: 100%;
+}
+
+.overlay-right{
+  display: block;
+  opacity: 0;
+  position: absolute;
+  top: 7%;
+  margin-left: 0;
+  width: 70px;
+}
+
+.overlay-right .fa{
+  cursor: pointer;
+  background-color: #fff;
+  color: #000;
+  height: 35px;
+  width: 35px;
+  font-size: 20px;
+  padding: 7px;
+  top: 5%;
+  margin-bottom: 5%;
+}
+
+.overlay-right .btn-secondary{
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+
+}
+
+.product-top:hover .overlay-right{
+  opacity: 1;
+  margin-left: 5%;
+  transition: 0.5s;
+}
+
+.product-bottom .fa{
+  color: green;
+  font-size: 10px;
+}
+
+.product-bottom h3{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.product-bottom h5{
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+
