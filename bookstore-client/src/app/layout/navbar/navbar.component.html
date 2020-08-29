@@ -1,0 +1,15 @@
+<header class="sticky-top">
+  <h5 class="text-info" (click)="goHome()">Book-Store</h5>
+  <nav>
+    <ul class="nav__links">
+      <li class="bordered-cart"><a (click)="cart()" title="panier" style="cursor: pointer;"><i class="fa fa-shopping-cart">
+          <span style="color: red;">
+            {{numberOfItemsInCart}}
+          </span></i></a>
+      </li>
+      <li><a href="#" title="Notification"><i class="fa fa-bell"></i></a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+  <a href="#" class="cta"><button>Login</button></a>
+</header>

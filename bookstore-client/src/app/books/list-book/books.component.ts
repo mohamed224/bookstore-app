@@ -28,7 +28,7 @@ export class BooksComponent implements OnInit {
   }
 
   addBook() {
-    this.router.navigateByUrl('book/add');
+    this.router.navigateByUrl('add');
   }
 
   viewBook(id: number) {
@@ -36,7 +36,7 @@ export class BooksComponent implements OnInit {
   }
 
   editBook(id: number) {
-    this.router.navigate(['book/edit/', id]);
+    this.router.navigate(['edit/', id]);
   }
 
   deleteBook(book: Book) {

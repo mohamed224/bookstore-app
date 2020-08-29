@@ -8,6 +8,7 @@ import tn.enis.bookstrore.service.IClientService;
 import tn.enis.bookstrore.util.Credential;
 
 @RestController
+@CrossOrigin("*")
 public class ClientRestController {
 
     private IClientService clientService;

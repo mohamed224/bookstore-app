@@ -33,12 +33,12 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public void placeOrder(List<OrderItem> items, String email, String deliveryMethod) {
-        double totalAmount = items.stream().mapToDouble(item -> (item.getQuantity() * item.getPrice())).sum();
+    public Order placeOrder(List<OrderItem> items, String email, String deliveryMethod) {
+        double totalAmount = items.stream().mapToDouble(item -> ( item.getPrice())).sum();
         Order order = new Order();
         Client client = clientRepository.findByEmail(email);
         if(client==null){
-            throw new RuntimeException("Ce client n'existe pas");
+            throw new RuntimeException(String.format("Ce client avec l'email {} n'existe pas",email));
         }
         DeliveryMethod method = DeliveryMethod.fromShortName(deliveryMethod);
         order.setClient(client);
@@ -52,5 +52,6 @@ public class OrderService implements IOrderService {
             }
             orderItemRepository.saveAll(items);
         }
+        return order;
     }
 }

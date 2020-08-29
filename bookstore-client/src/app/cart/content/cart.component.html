@@ -1,0 +1,52 @@
+<div class="row pt-3 ml-4" *ngIf="totalItemPrice>0">
+    <div class="input-group col-md-5">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Mode de Livraison</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" (change)="deliveryMethodSelected($event)">
+          <option selected value="E">EXPRESS</option>
+          <option value="R">EN RELAIS</option>
+        </select>
+      </div>
+</div>
+<div class="row pt-3">
+    <div class="card-body">
+      <table class="table table-striped" *ngIf="totalItemPrice>0">
+        <thead>
+        <tr class="text-center">
+          <th>Nom</th>
+          <th>Auteur</th>
+          <th>Image</th>
+          <th>Prix Unitaire</th>
+          <th>Quantité</th>
+          <th>Sous-total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let cartBook of cartBooks" class="text-center">
+          <td>{{cartBook?.book.name}}</td>
+          <td>{{cartBook?.book.author}}</td>
+          <td><img class="rounded-circle" height="45px;" src="{{cartBook?.book.imgUrl}}" width="45px;"></td>
+          <td>{{cartBook?.book.price | currency}}</td>
+          <td><input type="number" [value]="cartBook.quantity" [max]="cartBook.book.quantity" [min]="cartBook.quantity"></td>
+          <td>{{cartBook.price | currency}}</td>
+          <td><a (click)="removeItemFromCart(cartBook)" class="cursor" title="Supprimer"><i class="fa fa-trash"
+                                                              style="color: red; cursor: pointer"></i></a></td>
+        </tr>
+        </tbody>
+      </table>
+      <!---------------Display order button and item total amount------------->
+      <div class="tfoot pt-3" *ngIf="totalItemPrice>0">
+        <div class="ml-4">
+          <button class="btn btn-primary" (click)="order()">Commander</button>
+        </div>
+        <div class="pull-right mr-4" ><h5 class="text-info">Total : {{totalItemPrice | currency}}</h5></div>
+      </div>
+      <!---------------Display cart and empty message------------->
+      <div *ngIf="totalItemPrice==0" class="pt-2">
+        <h3 class="text-info text-lg-center text-uppercase text-bold">Votre Panier est vide</h3>
+        <div class="pt-3 text-center"><img src="assets/img/shoppingCart.jpg" width="25%;" height="25%;"/></div>
+      </div>
+    </div>
+</div>
+

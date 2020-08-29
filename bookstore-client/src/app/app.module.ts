@@ -7,18 +7,24 @@ import {HttpClientModule} from "@angular/common/http";
 import {configServerInitFactory, ConfigService} from "./service/config.service";
 import {BooksModule} from "./books/books.module";
 import {ContentModule} from "./content/content.module";
+import {CartModule} from "./cart/cart.module";
+import { MainComponent } from './main/main.component';
+import {NavbarComponent} from "./layout/navbar/navbar.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BooksModule,
-    ContentModule
+    ContentModule,
+    CartModule
 
   ],
   providers: [
@@ -29,6 +35,9 @@ import {ContentModule} from "./content/content.module";
       deps: [ConfigService],
       multi: true
     }
+  ],
+  exports: [
+
   ],
   bootstrap: [AppComponent]
 })

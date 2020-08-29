@@ -5,9 +5,23 @@ import {BooksComponent} from './list-book/books.component';
 import {AddBookComponent} from "./add-book/add-book.component";
 
 const routes: Routes = [
-  {path: 'book', component: BooksComponent},
-  {path: 'book/add', component: AddBookComponent},
-  {path: 'book/edit/:id', component: AddBookComponent}
+  {
+    path:'',
+    children: [
+      {
+        path: '',
+        component: BooksComponent
+      },
+      {
+        path: 'add',
+        component: AddBookComponent
+      },
+      {
+        path: 'edit/:id',
+        component: AddBookComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

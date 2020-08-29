@@ -5,8 +5,13 @@ import {ContentRoutingModule} from './content-routing.module';
 import {ContentComponent} from './list-content/content.component';
 
 
+
+
+
 @NgModule({
   declarations: [ContentComponent],
+  exports: [
+  ],
   imports: [
     CommonModule,
     ContentRoutingModule

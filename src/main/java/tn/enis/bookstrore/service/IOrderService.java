@@ -9,5 +9,5 @@ public interface IOrderService {
 
     List<Order> getAllOrders();
 
-    void placeOrder(List<OrderItem> items, String email, String deliveryMethod);
+    Order placeOrder(List<OrderItem> items, String email, String deliveryMethod);
 }
