@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import {OrderItem} from "../model/order-item";
 import {Book} from "../../books/model/book";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
+  private numberOfItemsInCartObservable = new BehaviorSubject<number>(0);
+  numberOfItemsInCartObservable$ = this.numberOfItemsInCartObservable.asObservable();
   constructor() { }
 
   public addToCard(book : Book){
@@ -74,4 +77,7 @@ export class CartService {
     this.storeCartDataInSession(cartData,numberOfItemsInCart.toString());
   }
 
+  updateNumberOfItemInCartForNavBar(numberOfItemsInCart:number){
+    this.numberOfItemsInCartObservable.next(numberOfItemsInCart);
+  }
 }

@@ -3,7 +3,9 @@ import {CartService} from "../service/cart.service";
 import {GenericService} from "../../service/generic.service";
 import {Operation} from "../../utils/operations";
 import {DeliveryMethod} from "../../utils/deliveryMethod";
-import {CartObservableService} from "../../service/cart-observable.service";
+import {ClientService} from "../../client/service/client.service";
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +18,8 @@ export class CartComponent implements OnInit {
   numberOfItemsInCart:number =0;
   totalItemPrice:number = 0;
   deliveryMethod: DeliveryMethod = DeliveryMethod.EXPRESS;
-  constructor(private cartService: CartService , private genericService: GenericService , private cartObservableService: CartObservableService) {
+  constructor(private cartService: CartService , private genericService: GenericService,
+              private clientService: ClientService,private router: Router) {
 
   }
 
@@ -29,22 +32,30 @@ export class CartComponent implements OnInit {
     this.totalItemPrice = this.cartService.getTotalItemPriceInCart();
   }
   order() {
-    this.genericService.callService(Operation.POST,'orders',this.cartBooks,`email=mdiaby00@gmail.com&deliveryMethod=${this.deliveryMethod}`,)
-      .subscribe(data=>{
-        alert("Votre commande a été bien enregistée.");
-        this.cartService.clearBasket();
-        this.getCartContentForInitialisationPurpose();
+    let email = this.clientService.getUserEmailInSession();
+    if(email){
+      this.genericService.callService(Operation.POST,'orders',this.cartBooks,`email=${email}&deliveryMethod=${this.deliveryMethod}`,)
+        .subscribe(()=>{
+          alert("Votre commande a été bien enregistée.");
+          this.cartService.clearBasket();
+        },() => {
+        },()=>{
+          this.getCartContentForInitialisationPurpose();
+          this.numberOfItemsInCart = this.cartService.getNumberOfItemsInCart();
+          this.cartService.updateNumberOfItemInCartForNavBar(this.numberOfItemsInCart);
+        })
+    }else{
+      alert('Veuillez vous connecter pour pouvoir passer la commande.');
+      this.router.navigateByUrl('main/client/login');
+    }
 
-      },error => {
-        console.log(error.error.text);
-      })
   }
 
   removeItemFromCart(cartBook: any) {
     this.cartService.removeItemFromCart(cartBook);
     this.getCartContentForInitialisationPurpose();
     this.numberOfItemsInCart = this.cartService.getNumberOfItemsInCart();
-    this.cartObservableService.updateNumberOfItemInCartForNavBar(this.numberOfItemsInCart);
+    this.cartService.updateNumberOfItemInCartForNavBar(this.numberOfItemsInCart);
   }
 
   deliveryMethodSelected(event: any) {

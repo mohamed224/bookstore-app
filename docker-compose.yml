@@ -1,0 +1,36 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    container_name: database
+    volumes:
+      - bookstrore-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: bookStoreDb
+      MYSQL_USER: root
+      MYSQL_PASSWORD:
+    restart: always
+
+  bookstore-backend:
+    build: .
+    container_name: bookstore-backend
+    depends_on:
+      - db
+    ports:
+      - 9090:9090
+
+  bookstore-frontend:
+    build: ./bookstore-client
+    container_name: bookstore-frontend
+    ports:
+      - 4200:4200
+    depends_on:
+      - bookstore-backend
+volumes:
+  bookstrore-data:
+
+
+

@@ -20,7 +20,7 @@ public class ClientRestController {
         this.clientRepository = clientRepository;
     }
 
-    @GetMapping("/clients/login")
+    @PostMapping("/clients/login")
     public Client login(@RequestBody Credential credential) {
         return clientService.login(credential);
     }

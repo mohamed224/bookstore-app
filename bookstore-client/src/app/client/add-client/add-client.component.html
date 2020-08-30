@@ -1,7 +1,50 @@
-<div class="row">
+<div class="row pt-5">
   <div class="col-md-4"></div>
   <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title text-center text-info text-bold">Créer Un Nouveau Compte</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="clientForm">
+          <div class="card-body">
+            <div class="col-md-12">
+              <label>Prénom</label><br>
+              <input class="form-control" formControlName="firstName" name="firstName" type="text">
+            </div>
+            <div class="col-md-12">
+              <label>Nom</label><br>
+              <input class="form-control" formControlName="lastName" name="lastName" type="text">
+            </div>
+            <div class="col-md-12">
+              <label>Email</label><br>
+              <input class="form-control" formControlName="email" name="email" type="text">
+            </div>
+            <div class="col-md-12">
+              <label>Adresse</label><br>
+              <input class="form-control" formControlName="address" name="address" type="text">
+            </div>
+            <div class="col-md-12">
+              <label>Mot de passe</label><br>
+              <input class="form-control" formControlName="password" name="password" type="password">
+            </div>
+            <div class="col-md-12">
+              <label>Numéro de téléphone</label><br>
+              <input class="form-control" formControlName="phoneNumber" name="phoneNumber" type="text">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button (click)="save()" class="btn btn-sm btn-danger mr-2" type="submit">
+          <i class="fa fa-floppy-o"></i> Enregistrer
+        </button>
+        <a class="btn btn-sm btn-primary" (click)="goToLoginPage()">
+          <i class="fa fa-chevron-circle-right"></i> J'ai déjà un compte
+        </a>
 
+      </div>
+    </div>
   </div>
   <div class="col-md-4"></div>
 </div>

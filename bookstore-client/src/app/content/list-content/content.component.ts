@@ -3,9 +3,7 @@ import {GenericService} from "../../service/generic.service";
 import {Book} from "../../books/model/book";
 import {Operation} from "../../utils/operations";
 import {CartService} from "../../cart/service/cart.service";
-import {OrderItem} from "../../cart/model/order-item";
-import {Router} from "@angular/router";
-import {CartObservableService} from "../../service/cart-observable.service";
+
 
 @Component({
   selector: 'app-content',
@@ -17,7 +15,7 @@ export class ContentComponent implements OnInit {
   books: Book [];
   cartBooks : any = [];
   numberOfItemsInCart:number =0;
-  constructor(private genericService: GenericService , private cartService: CartService , private cartObservableService: CartObservableService) {
+  constructor(private genericService: GenericService , private cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -41,7 +39,7 @@ export class ContentComponent implements OnInit {
   addToCard(book: Book) {
     this.cartService.addToCard(book);
     this.numberOfItemsInCart = this.cartService.getNumberOfItemsInCart();
-    this.cartObservableService.updateNumberOfItemInCartForNavBar(this.numberOfItemsInCart);
+    this.cartService.updateNumberOfItemInCartForNavBar(this.numberOfItemsInCart);
 
   }
 }

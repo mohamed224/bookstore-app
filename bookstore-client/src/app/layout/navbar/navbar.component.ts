@@ -22,4 +22,8 @@ export class NavbarComponent implements OnInit {
   goHome() {
     this.router.navigateByUrl('main/content');
   }
+
+  goToLoginPage() {
+    this.router.navigateByUrl('main/client/login');
+  }
 }

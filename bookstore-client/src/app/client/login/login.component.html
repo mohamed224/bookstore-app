@@ -1,1 +1,38 @@
-<p>login works!</p>
+<div class="row pt-5">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title text-center text-info text-bold">Connexion</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="credentialForm">
+          <div class="card-body">
+            <div class="col-md-12">
+              <label>Email</label><br>
+              <input class="form-control" formControlName="email" name="email" type="text">
+            </div>
+            <div class="col-md-12">
+              <label>Mot de passe</label><br>
+              <input class="form-control" formControlName="password" name="password" type="password">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button (click)="login()" class="btn btn-sm btn-danger mr-2" type="submit">
+          <i class="fa fa-floppy-o"></i> Connexion
+        </button>
+        <a class="btn btn-sm btn-primary mr-2" (click)="goToCreateClientPage()">
+          <i class="fa fa-chevron-circle-right"></i> Créer un compte
+        </a>
+        <a class="btn btn-sm btn-primary" (click)="resetPassword()">
+          <i class="fa fa-chevron-circle-right"></i> Mot de passe oublié?
+        </a>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
